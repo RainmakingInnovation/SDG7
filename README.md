@@ -1,1 +1,1 @@
-https://rainmakinginnovation.github.io/SDG12/
+https://rainmakinginnovation.github.io/SDG7/
