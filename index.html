@@ -1529,21 +1529,20 @@
           geoFilter = "All Startups",
           filters = {type: "All Startups", geotype: "All Startups", industry: "All Startups", innovation: "All Startups"}
           definitions = {
-            'Product Development': "Creating circular product",
-            'Sourcing': "Sourcing sustainable and circular raw materials",
-            'Manufacturing': "Efficient production with reduced waste streams",
-            'Product Use': "Increasing product utilization and life cycles",
-            'End of life': "Recirculation at the products end of use / life",
-            'Reverse Logistics': "Efficient recovery and reintegration of products into the value chain.",
-            Logistics: "Efficient and sustainable downstream delivery"
+            'Deeptech / Technology innovation': "Technology innovation enabling clean, affordable and reliable energy production.",
+            'Access to affordable reliable and modern energy services': "Business to consumer energy services giving Consumers access to Affordable, reliable and modern energy.",
+            'Increased share of renewable energy': "Technologies and solution which directly increase the share of renewable energy in the global energy mix.",
+            'Energy efficiencies': "Solutions that increase energy efficiency in energy production and industrial usage.",
+            'Electrification': "Technologies that enable the transition from Fuel based solution to clean energy solutions.",
+            'Energy for developing countries': "Energy solutions providers that increase access to energy in developing countries."
           }
           field_order = [
-            "Product Development",
-            "Sourcing",
-            "Manufacturing",
-            "Product Use",
-            "End of Life",
-            "Reverse Logistics"
+            "Deeptech / Technology innovation",
+            "Access to affordable reliable and modern energy services",
+            "Increased share of renewable energy",
+            "Energy efficiencies",
+            "Electrification",
+            "Energy for developing countries"
           ]
           logoPath = "assets/logo2.png",
           titleLogoWidth = 80,
@@ -1687,7 +1686,7 @@
         var chartTitle = chartSVG
           .append("text")
           .attr("class", "chart-title")
-          .text("SDG 7 Compass")
+          .text("SDG 7: Affordable & Clean Energy")
           .attr("y", (-height * 4.55) / 10)
           .style("display", "none")
   
@@ -1775,8 +1774,8 @@
               spinner.stop();
               d3.select("#button-16").style("display", "block")
               //d3.select("#button-17").style("display", "block")
-              d3.select(".dropdown-industry").style("display", "inline-block")
-              d3.select(".dropdown-innovation").style("display", "inline-block")
+              //d3.select(".dropdown-industry").style("display", "inline-block")
+              //d3.select(".dropdown-innovation").style("display", "inline-block")
               d3.select("#save-button").style("display", "block")
               d3.select(".chart-title").style("display", "")
               chartLogo.style("display", "block")
@@ -3120,7 +3119,7 @@
               .attr("id", function(d) {
                 return (
                   "background-segment-" +
-                  d.data.value.key.replace(/ /g, "-").replace(/&/g, "and").replace(/:/g, "")
+                  d.data.value.key.replace(/ /g, "-").replace(/&/g, "and").replace(/:/g, "").replace(/\//g, "")
                 );
               })
               .style("opacity", 0)
@@ -3142,7 +3141,7 @@
                     return (
                       v.name.toLowerCase() +
                       "-" +
-                      d.data.value.key.replace(/ /g, "-").replace(/&/g, "and").replace(/:/g, "") +
+                      d.data.value.key.replace(/ /g, "-").replace(/&/g, "and").replace(/:/g, "").replace(/\//g, "") +
                       "-segment"
                     );
                   })
@@ -3167,7 +3166,7 @@
                       "year-" +
                       v.key +
                       "-" +
-                      d.data.value.key.replace(/ /g, "-").replace(/&/g, "and").replace(/:/g, "") +
+                      d.data.value.key.replace(/ /g, "-").replace(/&/g, "and").replace(/:/g, "").replace(/\//g, "") +
                       "-segment"
                     );
                   })
@@ -5095,7 +5094,7 @@
                       "#year-" +
                         d.key +
                         "-" +
-                        v.data.value.key.replace(/ /g, "-").replace(/&/g, "and").replace(/:/g, "") +
+                        v.data.value.key.replace(/ /g, "-").replace(/&/g, "and").replace(/:/g, "").replace(/\//g, "") +
                         "-segment"
                     ).attr("opacity", 1);
                   });
@@ -5148,7 +5147,7 @@
                       "#year-" +
                         d.key +
                         "-" +
-                        v.data.value.key.replace(/ /g, "-").replace(/&/g, "and").replace(/:/g, "") +
+                        v.data.value.key.replace(/ /g, "-").replace(/&/g, "and").replace(/:/g, "").replace(/\//g, "") +
                         "-segment"
                     ).attr("opacity", 0);
                   });
@@ -5301,7 +5300,6 @@
                     return 0.3;
                   }
                 });
-                nodes_activity.attr("opacity", 0.3);
               }
   
               if (type === "activity") {
@@ -5342,6 +5340,7 @@
                   segmentDesc = v.Description;
                 }
               });*/
+              console.log('segment_data.data.value.key', segment_data.data.value.key)
               segmentDesc = definitions[segment_data.data.value.key]
             var count = d3
               .nest()
